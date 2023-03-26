@@ -9,12 +9,10 @@ PrintChar:
     push rbx
     push rcx 
     push rdx
-
-    mov rdx, [rbp + 16]
     
     mov rax, 4
     mov rbx, 1
-    mov rcx, rdx
+    mov rcx, [rbp + 16]
     mov rdx, 1
     int 0x80
 

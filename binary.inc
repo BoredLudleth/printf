@@ -15,6 +15,7 @@ BinaryPrint:
     mov rcx, 64
 
     mov rax, [rbp + 16]
+    mov rax, [rax]
 
 SkipZeros:
     shl rax, 1

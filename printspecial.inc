@@ -14,9 +14,7 @@ printStrangeSym:
     cmp rbx, 'x'                            ; out of print range
     ja .Error
 
-    sub rbx, '%'                            ; alignment with jump table
-
-    mov     rax, [.JumpTable + rbx*8]       ; jumping..
+    mov     rax, [.JumpTable + (rbx - '%')*8]       ; jumping..
     jmp     rax
 
 .PercentPrint:
@@ -51,10 +49,34 @@ printStrangeSym:
     jmp .SnitchExit
 
 .OctalPrint:
+    add r8, 8
+    mov rcx, [rbp + 24]
+    push rcx
+
+    call OctalPrint
+
+    pop rcx
+    jmp .SnitchExit
 
 .PrintString:
+    add r8, 8
+    mov rcx, [rbp + 24]
+    push rcx
+
+    call StringPrint
+
+    pop rcx
+    jmp .SnitchExit
 
 .HexPrint:
+    add r8, 8
+    mov rcx, [rbp + 24]
+    push rcx
+
+    call HexPrint
+
+    pop rcx
+    jmp .SnitchExit
 
 .Error:
     mov cx, 33  
@@ -71,7 +93,7 @@ section .rodata
     dq  .BinaryPrint        ; %b [61]
     dq  .CharPrint          ; %c [62]
     dq  .DecPrint           ; %d [63]
-    times 14 dq  .Error     ; %e - %n [64] - [73]
+    times 10 dq  .Error     ; %e - %n [64] - [73]
     dq .OctalPrint          ; %o [74]
     times 3 dq  .Error      ; %p - %r [75] - [77]
     dq  .PrintString        ; %s [78]
