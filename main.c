@@ -3,19 +3,14 @@ extern int _printf(const char* fmt, ...);
 
 int main () {
 
-    _printf ("Ultra Mega Failed printf\n");
-
-    _printf ("%% -percent\n%b - bin\n%c - char\n%d -dec\n%o - octo\n%s - string\n%x - hex\n", 58, 'y', 58, 58, "It's String", 58, 58);
-    _printf ("\n\n");
+    _printf ("Henlo, i'm little printf\nLet's test me\n");
 
     int x = 67;
     int y = -80;
     char a = 'v';
-    char slovo[10] = "pop\0";
-    slovo[6] = 0;
+    char* slovo = "popa\0";
 
-    _printf ("\n%c - char\n%d -dec\n%o - octo\n%x - hex\n%s - string\n", a, y, x, x, slovo);
-    _printf ("%x", 8);
+    _printf ("Test#1:%% -percent\nTest#2:%b - bin\nTest#3:%c - char\nTest#4:%d -dec\nTest#5:%o - octo\nTest#5:%s - string\nTest#6:%x - hex\nTest#7:%x - hex2\nTest#8:%c - char\nTest#9:%d -dec\nTest#10:%o - octo\nTest#11:%x - hex\nTest#12:%s - string\n", 58, 'y', 58, 58, "It's String", 58, 0xbad, a, y, x, x, slovo);
 
     return 0;
 }

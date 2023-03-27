@@ -30,7 +30,13 @@ Printing:
 PrintSpecial:
     add rsi, 1                          ; take symbol after %
                                         ; should i check it on rightness? and give error code
-    mov rdx, [rbp + r8 + 8]                 ; need check if it's end of stack
+
+    cmp r8, 64
+    jne Continue
+    add r8, 8
+    jmp Continue
+Continue:
+    mov rdx, [rbp + r8 + 8]             ;add here
 
     push rdx                            ; print %smth
     push rsi 
