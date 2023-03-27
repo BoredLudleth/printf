@@ -45,7 +45,13 @@ printStrangeSym:
     jmp .SnitchExit
 
 .DecPrint:
-    mov bx, 0
+    add r8, 8
+    mov rcx, [rbp + 24]
+    push rcx
+
+    call DecPrint
+
+    pop rcx
     jmp .SnitchExit
 
 .OctalPrint:

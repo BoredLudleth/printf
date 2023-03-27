@@ -37,14 +37,15 @@ LenStr:
     
     mov rdi, [rbp + 16]
     mov al, 0
-    mov rcx, 0xffffffff
+    mov rcx, 0
+    not rcx
 
     repne scasb
     mov rax, [rbp + 16]
     sub rdi, rax
-    mov rdx, rdi 
+    mov rdx, rdi
 
-    pop rdi
+    pop rdi 
     pop rcx
     pop rax
 

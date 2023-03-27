@@ -13,14 +13,15 @@ HexPrint:
     push rbx
     push rcx
     push rdx
+
     xor rcx, rcx
+    xor rax, rax
 
     mov eax, [rbp + 16]
-    mov eax, [eax]
 
 PrintHex:
     mov edx, 0
-    mov ebx, 16
+    mov ebx, 0x10
     div ebx
     cmp edx, 9
     ja Alpha
@@ -65,7 +66,5 @@ PrintingLoopHex:
     pop rax
 
 EndHex:
-    pop rdx
-    pop rax
     pop rbp
     ret

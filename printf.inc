@@ -1,11 +1,20 @@
 BITS 64
 
+    %include "printsym.inc"
+    %include "printspecial.inc"
+    %include "binary.inc"
+    %include "char.inc"
+    %include "oct.inc"
+    %include "hex.inc"
+    %include "string.inc"
+    %include "int.inc"
+
 printf:
     push rbp
     mov rbp, rsp
 
     mov rdi, 1                          ; why?
-    mov r8, 16                          ; r8 - delta in stack to take arguments
+    mov r8, 24                          ; r8 - delta in stack to take arguments
     mov rsi, [rbp + r8]                 ; string such as "Hello darkness my old friend"                 
 
 Printing:

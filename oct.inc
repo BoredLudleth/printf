@@ -16,7 +16,7 @@ OctalPrint:
     xor rcx, rcx
 
     mov eax, [rbp + 16]
-    mov eax, [eax]
+
 
 PrintOct:
     mov edx, 0

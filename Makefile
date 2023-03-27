@@ -1,10 +1,11 @@
-all: compile link
+all: link compile
 
-compile: printf.asm
-	nasm -g -f elf64 printf.asm -l printf.lst
+link: main.c printf.asm
+	gcc -c main.c -o main.o
+	nasm -f elf64 -l printf.lst -o printf.o -g printf.asm
 
-link: printf.o
-	ld -m elf_x86_64 printf.o -o printf
+compile: main.o printf.o
+	gcc -no-pie main.o printf.o -o main
 
 clean:
-	rm *.o *.out *.lst
+	rm *.o *.out *.lst main
