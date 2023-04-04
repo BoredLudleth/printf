@@ -18,7 +18,7 @@ DecPrint:
     xor rax, rax
     xor rcx, rcx
 
-    mov eax, [rbp + 16]
+    mov eax, [rbp + 16]                     ;signum eax
     cmp eax, 2147483648
 
     jae NegativeNum
